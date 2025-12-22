@@ -1,0 +1,8 @@
+{
+  "name": "UniLife - Smart Campus Platform",
+  "description": "A comprehensive campus platform featuring a second-hand market, lost & found, and community forum, powered by AI for smart matching and content moderation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
