@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { Settings, CreditCard, Box, ShieldCheck, ChevronRight, Bell, Heart, HelpCircle } from 'lucide-react';
 import { currentUser } from '../services/mockData';
 
 const Profile: React.FC = () => {
   return (
-    <div className="space-y-6 animate-in fade-in duration-300">
+    <div className="space-y-6 animate-in fade-in duration-500">
       {/* Profile Header */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-[100px] -z-0 opacity-50"></div>
@@ -78,12 +79,8 @@ const Profile: React.FC = () => {
             </div>
         ))}
       </div>
-
-       <button className="w-full py-3 text-red-500 font-medium bg-white rounded-xl shadow-sm border border-gray-100 hover:bg-red-50 transition-colors active:scale-[0.99]">
-        退出登录
-       </button>
        
-       <p className="text-center text-xs text-gray-400 pt-4">UniLife v1.0.2 Build 2024</p>
+       <p className="text-center text-xs text-gray-400 pt-4">智慧校园 v1.0.2 Build 2024</p>
     </div>
   );
 };

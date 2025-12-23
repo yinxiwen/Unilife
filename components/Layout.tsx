@@ -1,26 +1,20 @@
 
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, ShoppingBag, Search, MessageSquare, User, Bell, ChevronLeft, LogOut, ShieldCheck } from 'lucide-react';
+import { Home, ShoppingBag, Search, MessageSquare, User, Bell, ChevronLeft, ShieldCheck } from 'lucide-react';
 import { currentUser } from '../services/mockData';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-// Fixed: Explicitly typed Layout with LayoutProps to include children support
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    navigate('/login');
-  };
-
   const isActive = (path: string) => location.pathname === path;
   const isHome = location.pathname === '/';
-  const isDetailPage = /^\/(market|lost-found|forum|user)\/.+/.test(location.pathname);
+  const isDetailPage = /^\/(market|lost-found|forum|user|chat)\/.+/.test(location.pathname);
   const mainPaths = ['/', '/market', '/lost-found', '/forum', '/profile'];
   const showBackButton = !mainPaths.includes(location.pathname);
 
@@ -39,10 +33,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-gray-200 fixed h-full z-20">
         <div className="p-6 flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
             <div className="bg-indigo-600 p-2 rounded-xl">
-              <span className="text-white font-bold text-xl leading-none">U</span>
+              <span className="text-white font-bold text-xl leading-none">智</span>
             </div>
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-              UniLife
+              智慧校园
             </h1>
         </div>
 
@@ -70,12 +64,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                  管理员后台
                </Link>
             )}
-             <div 
-               onClick={handleLogout}
-               className="flex items-center gap-3 px-4 py-3 text-sm font-bold text-red-500 hover:bg-red-50 rounded-2xl cursor-pointer transition-colors"
-             >
-                <LogOut className="w-5 h-5" />
-                <span>退出登录</span>
+             <div className="px-4 py-2 text-xs text-gray-400 font-medium">
+               智慧校园 v1.0.2
              </div>
         </div>
       </aside>
@@ -96,9 +86,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 
                 <div className="md:hidden flex items-center gap-2" onClick={() => navigate('/')}>
                     <div className="bg-indigo-600 p-1.5 rounded-lg">
-                        <span className="text-white font-bold text-lg leading-none">U</span>
+                        <span className="text-white font-bold text-lg leading-none">智</span>
                     </div>
-                    <span className="font-bold text-lg text-gray-800">UniLife</span>
+                    <span className="font-bold text-lg text-gray-800">智慧校园</span>
                 </div>
 
                 {!isHome && (
