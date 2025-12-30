@@ -1,3 +1,4 @@
+
 export interface User {
   id: string;
   name: string;
@@ -51,4 +52,26 @@ export interface Notification {
   message: string;
   read: boolean;
   date: string;
+}
+
+export interface ModerationItem {
+  id: string;
+  source: 'market' | 'lostfound' | 'forum';
+  title: string;
+  content: string;
+  author: User;
+  riskLevel: 'low' | 'medium' | 'high';
+  reportCount: number;
+  timestamp: string;
+  status: 'pending' | 'approved' | 'rejected' | 'hidden';
+}
+
+export interface SystemLog {
+  id: string;
+  operator: string;
+  action: string;
+  target: string;
+  ip: string;
+  timestamp: string;
+  status: 'success' | 'error' | 'warning';
 }

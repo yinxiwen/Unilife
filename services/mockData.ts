@@ -1,11 +1,11 @@
 
-import { Product, LostItem, Post, User, Notification } from '../types';
+import { Product, LostItem, Post, User, Notification, ModerationItem, SystemLog } from '../types';
 
 export const currentUser: User = {
   id: 'u1',
   name: '李明',
   avatar: 'https://picsum.photos/seed/alex/100/100',
-  role: 'student',
+  role: 'admin', // Changed to admin for testing the dashboard
   college: '计算机学院',
   creditScore: 780,
   verified: true
@@ -42,17 +42,6 @@ export const products: Product[] = [
     status: 'active',
     description: '无笔记，保存良好。',
     createdAt: '5小时前'
-  },
-  {
-    id: 'p3',
-    title: '九号电动滑板车',
-    price: 800,
-    image: 'https://picsum.photos/seed/scooter/400/300',
-    category: '交通',
-    seller: allUsers[3],
-    status: 'sold',
-    description: '可折叠，续航20公里。',
-    createdAt: '1天前'
   },
   {
     id: 'p4',
@@ -117,30 +106,54 @@ export const posts: Post[] = [
 ];
 
 export const notifications: Notification[] = [
-  {
-    id: 'n1',
-    type: 'match',
-    message: '您的“蓝色保温杯”发现了新的智能匹配，匹配度92%！',
-    read: false,
-    date: '10-24 15:00'
-  },
-  {
-    id: 'n2',
-    type: 'transaction',
-    message: '您购买的“微积分教材”订单已完成，请评价。',
-    read: true,
-    date: '10-22 10:30'
-  },
-  {
-    id: 'n3',
-    type: 'system',
-    message: '智慧校园 1.0 版本上线，快来探索新功能吧！',
-    read: true,
-    date: '10-20 09:00'
-  }
+  { id: 'n1', type: 'match', message: '您的“蓝色保温杯”发现了新的智能匹配，匹配度92%！', read: false, date: '10-24 15:00' },
+  { id: 'n2', type: 'transaction', message: '您购买的“微积分教材”订单已完成，请评价。', read: true, date: '10-22 10:30' },
 ];
 
 export const transactions = [
   { id: 't1', title: '微积分教材', price: 25, type: 'buy', status: '已完成', date: '2023-10-22' },
   { id: 't2', title: 'iPad Pro 11寸', price: 3200, type: 'sell', status: '进行中', date: '2023-10-24' }
+];
+
+export const moderationQueue: ModerationItem[] = [
+  {
+    id: 'm1',
+    source: 'forum',
+    title: '如何评价最近的食堂涨价？',
+    content: '最近食堂的价格越来越贵了，而且分量还变少了，真的受不了。',
+    author: allUsers[1],
+    riskLevel: 'medium',
+    reportCount: 3,
+    timestamp: '2023-10-24 10:00',
+    status: 'pending'
+  },
+  {
+    id: 'm2',
+    source: 'market',
+    title: '代写各类论文，保证原创',
+    content: '专业代写，硕博团队，价格公道，需要的私信。',
+    author: allUsers[2],
+    riskLevel: 'high',
+    reportCount: 12,
+    timestamp: '2023-10-24 11:20',
+    status: 'pending'
+  },
+  {
+    id: 'm3',
+    source: 'lostfound',
+    title: '捡到一个奇怪的包裹',
+    content: '在南操场捡到一个写着奇怪符号的黑色包裹，感觉有点吓人。',
+    author: allUsers[3],
+    riskLevel: 'low',
+    reportCount: 1,
+    timestamp: '2023-10-24 12:05',
+    status: 'pending'
+  }
+];
+
+export const systemLogs: SystemLog[] = [
+  { id: 'log1', operator: 'Admin01', action: '审核通过商品', target: 'MacBook Pro M1', ip: '192.168.1.102', timestamp: '2023-10-24 14:05:22', status: 'success' },
+  { id: 'log2', operator: 'System', action: '敏感词拦截', target: '用户ID: u402', ip: 'internal', timestamp: '2023-10-24 14:10:45', status: 'warning' },
+  { id: 'log3', operator: 'Admin01', action: '禁用用户', target: '用户ID: u291', ip: '192.168.1.102', timestamp: '2023-10-24 14:15:10', status: 'success' },
+  { id: 'log4', operator: 'System', action: '数据库备份失败', target: 'MainDB_Backup', ip: 'internal', timestamp: '2023-10-24 03:00:00', status: 'error' }
 ];
