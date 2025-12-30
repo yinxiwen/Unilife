@@ -16,6 +16,10 @@ import Profile from './pages/Profile';
 import UserProfile from './pages/UserProfile';
 import Admin from './pages/Admin';
 import Chat from './pages/Chat';
+import MyPosts from './pages/MyPosts';
+import Transactions from './pages/Transactions';
+import Favorites from './pages/Favorites';
+import Notifications from './pages/Notifications';
 import { currentUser } from './services/mockData';
 
 const App: React.FC = () => {
@@ -37,6 +41,11 @@ const App: React.FC = () => {
           <Route path="/forum/publish" element={<PublishForum />} />
           
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/posts" element={<MyPosts />} />
+          <Route path="/profile/transactions" element={<Transactions />} />
+          <Route path="/profile/favorites" element={<Favorites />} />
+          <Route path="/profile/notifications" element={<Notifications />} />
+          
           <Route path="/user/:id" element={<UserProfile />} />
           <Route path="/chat/:id" element={<Chat />} />
           

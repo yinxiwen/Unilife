@@ -1,5 +1,5 @@
 
-import { Product, LostItem, Post, User } from '../types';
+import { Product, LostItem, Post, User, Notification } from '../types';
 
 export const currentUser: User = {
   id: 'u1',
@@ -53,6 +53,17 @@ export const products: Product[] = [
     status: 'sold',
     description: '可折叠，续航20公里。',
     createdAt: '1天前'
+  },
+  {
+    id: 'p4',
+    title: 'iPad Pro 11寸 2021',
+    price: 3200,
+    image: 'https://picsum.photos/seed/ipad/400/300',
+    category: '数码',
+    seller: currentUser,
+    status: 'active',
+    description: '屏幕无划痕，自用闲置。',
+    createdAt: '昨天'
   }
 ];
 
@@ -92,5 +103,44 @@ export const posts: Post[] = [
     author: allUsers[4],
     isTop: true,
     createdAt: '1小时前'
+  },
+  {
+    id: 'po2',
+    title: '今天一食堂的糖醋排骨绝了',
+    content: '大家快去吃，晚了就没了！',
+    category: 'life',
+    likes: 120,
+    comments: 34,
+    author: currentUser,
+    createdAt: '3小时前'
   }
+];
+
+export const notifications: Notification[] = [
+  {
+    id: 'n1',
+    type: 'match',
+    message: '您的“蓝色保温杯”发现了新的智能匹配，匹配度92%！',
+    read: false,
+    date: '10-24 15:00'
+  },
+  {
+    id: 'n2',
+    type: 'transaction',
+    message: '您购买的“微积分教材”订单已完成，请评价。',
+    read: true,
+    date: '10-22 10:30'
+  },
+  {
+    id: 'n3',
+    type: 'system',
+    message: '智慧校园 1.0 版本上线，快来探索新功能吧！',
+    read: true,
+    date: '10-20 09:00'
+  }
+];
+
+export const transactions = [
+  { id: 't1', title: '微积分教材', price: 25, type: 'buy', status: '已完成', date: '2023-10-22' },
+  { id: 't2', title: 'iPad Pro 11寸', price: 3200, type: 'sell', status: '进行中', date: '2023-10-24' }
 ];
