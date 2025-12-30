@@ -20,6 +20,10 @@ import MyPosts from './pages/MyPosts';
 import Transactions from './pages/Transactions';
 import Favorites from './pages/Favorites';
 import Notifications from './pages/Notifications';
+import Stats from './pages/admin/Stats';
+import Moderation from './pages/admin/Moderation';
+import Config from './pages/admin/Config';
+import Logs from './pages/admin/Logs';
 import { currentUser } from './services/mockData';
 
 const App: React.FC = () => {
@@ -49,10 +53,18 @@ const App: React.FC = () => {
           <Route path="/user/:id" element={<UserProfile />} />
           <Route path="/chat/:id" element={<Chat />} />
           
+          {/* 后台管理嵌套路由 */}
           <Route 
             path="/admin" 
-            element={currentUser.role === 'admin' ? <Admin /> : <Navigate to="/" replace />} 
-          />
+            element={currentUser.role === 'admin' ? <Admin /> : <Navigate to="/" replace />}
+          >
+            {/* 默认重定向到数据统计 */}
+            <Route index element={<Navigate to="stats" replace />} />
+            <Route path="stats" element={<Stats />} />
+            <Route path="moderation" element={<Moderation />} />
+            <Route path="config" element={<Config />} />
+            <Route path="logs" element={<Logs />} />
+          </Route>
           
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
